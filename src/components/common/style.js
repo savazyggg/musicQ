@@ -5,5 +5,5 @@ export const SContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: calc(100vh - 95px);
+  height: calc(100vh - 35px);
 `;
