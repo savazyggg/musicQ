@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <SFooter>
       <div style={{ marginRight: 0 }}>
-        <Image src={imgUrl} marginRight={1} height="58px" />
+        <Image src={imgUrl} marginRight={1} height="50px" />
         <SText fontWeight={600} marginLeft="8px">
           The mystery
         </SText>

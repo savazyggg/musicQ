@@ -3,6 +3,8 @@ import { opacity } from "./core";
 
 export const SContainer = styled.div`
   width: 100%;
+  padding: 0 20px;
+
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
