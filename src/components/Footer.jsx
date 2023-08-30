@@ -1,6 +1,6 @@
 import { Box, Image, Text, Flex } from "@chakra-ui/react";
 import styled from "@emotion/styled";
-import { opacity, theme } from "./common/core";
+import { opacity } from "./common/core";
 
 //        <Image src={logo} marginRight={1} />
 const Footer = () => {
