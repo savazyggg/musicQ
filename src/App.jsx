@@ -8,18 +8,18 @@ import { onLogin } from "./components/api/onLogin";
 
 function App() {
   const [isLogin, setIsLogin] = useState(null);
-  const onLoginClick = (token) => setIsLogin(token);
-  useEffect(() => {}, [isLogin]);
+
+  const onGetToken = async () => {
+    const token = await onLogin();
+    setIsLogin(token);
+  };
+
+  useEffect(() => onGetToken(), []);
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: (
-        <Layout
-          onLoginClick={onLoginClick}
-          onLogin={onLogin}
-          isLogin={isLogin}
-        />
-      ),
+      element: <Layout isLogin={isLogin} />,
       errorElement: <ErrorPage />,
       children: [
         { index: true, element: <IntroPage isLogin={isLogin} /> },

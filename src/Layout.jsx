@@ -3,10 +3,10 @@ import styled from "@emotion/styled";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-const Layout = ({ onLoginClick, onLogin, isLogin }) => {
+const Layout = ({ isLogin }) => {
   return (
     <SLayOut>
-      <Header onLoginClick={onLoginClick} onLogin={onLogin} isLogin={isLogin} />
+      <Header isLogin={isLogin} />
       <Outlet />
       <Footer />
     </SLayOut>
