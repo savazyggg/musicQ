@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
-import { Input, Button } from "@chakra-ui/react";
+import { theme } from "./common/core";
 import { onSearch } from "./api/onSearch";
 
 const Header = ({ isLogin }) => {
@@ -23,24 +23,10 @@ const Header = ({ isLogin }) => {
   return (
     <SHeader>
       <SSearchbar>
-        <Input
-          bg="blue.400"
-          color="white"
-          padding={4}
-          marginTop={6}
-          onChange={onSearchInput}
-          value={findText}
-        />
-        <Button
-          bg="blue.500"
-          color="white"
-          marginTop={6}
-          width="30%"
-          _hover={{ bg: "blue.700" }}
-          onClick={() => onSearchBtn(access_token, findText)}
-        >
+        <input onChange={onSearchInput} value={findText} />
+        <button onClick={() => onSearchBtn(access_token, findText)}>
           Search
-        </Button>
+        </button>
       </SSearchbar>
     </SHeader>
   );
@@ -49,15 +35,29 @@ const Header = ({ isLogin }) => {
 export default Header;
 
 const SHeader = styled.div`
-  position: fixed;
-  top: 0;
   display: flex;
   justify-content: flex-end;
-  background-color: yellow;
-  height: 40px;
-  width: 375px;
+  background-color: ${theme.subFontColor};
+  height: 35px;
+  width: 100%;
 `;
 
 const SSearchbar = styled.div`
   display: flex;
+  width: 100%;
+  input {
+    padding-left: 20px;
+    width: 100%;
+    background-color: ${theme.subFontColor};
+  }
+  input:focus {
+    outline: none;
+  }
+  button {
+    width: 20%;
+    background-color: ${theme.buttonColor};
+  }
+  button:hover {
+    background-color: ${theme.pointFontColor};
+  }
 `;

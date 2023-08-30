@@ -1,15 +1,36 @@
 import { Box, Image, Text, Flex } from "@chakra-ui/react";
-import logo from "../assets/openai.png";
+import styled from "@emotion/styled";
+import { opacity, theme } from "./common/core";
 
+//        <Image src={logo} marginRight={1} />
 const Footer = () => {
   return (
-    <Box position="fixed" bottom={0} width="375px;" backgroundColor="yellow">
-      <Flex justifyContent="center" alignItems="center">
-        <Image src={logo} marginRight={1} />
-        <Text>Powered By Open AI</Text>
-      </Flex>
-    </Box>
+    <SFooter>
+      <div>
+        <Text>이미지</Text>
+        <Text>제목</Text>
+      </div>
+      <div>
+        <Text>재생/스탑</Text>
+        <Text>넘기기</Text>
+      </div>
+    </SFooter>
   );
 };
 
 export default Footer;
+
+const SFooter = styled.div`
+  bottom: 0;
+  display: flex;
+
+  justify-content: space-between;
+  background-color: rgba(176, 168, 185, ${opacity.heavy});
+
+  height: 50px;
+  width: 100%;
+  div {
+    display: flex;
+    align-items: center;
+  }
+`;
