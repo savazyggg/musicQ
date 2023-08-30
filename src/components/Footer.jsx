@@ -21,14 +21,16 @@ const Footer = () => {
 export default Footer;
 
 const SFooter = styled.div`
+  position: fixed;
+  max-width: 500px;
   bottom: 0;
   display: flex;
-
   justify-content: space-between;
   background-color: rgba(176, 168, 185, ${opacity.heavy});
-
-  height: 50px;
+  height: 60px;
   width: 100%;
+  z-index: 2;
+  backdrop-filter: blur(10px);
   div {
     display: flex;
     align-items: center;

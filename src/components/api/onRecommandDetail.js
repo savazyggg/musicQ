@@ -1,4 +1,4 @@
-export const onRecommand = async (accessToken) => {
+export const onRecommandDetail = async (accessToken, detailApi) => {
   console.log("api ", accessToken);
   const categoryParams = {
     method: "GET",
@@ -7,10 +7,7 @@ export const onRecommand = async (accessToken) => {
       Authorization: "Bearer " + accessToken,
     },
   };
-  let RecommandID = await fetch(
-    "https://api.spotify.com/v1/browse/categories?country=KR&locale=sv_SE&limit=10&offset=5",
-    categoryParams
-  );
+  let RecommandID = await fetch(detailApi, categoryParams);
   let RecommandIDRes = await RecommandID.json();
-  return RecommandIDRes.categories.items;
+  console.log(RecommandIDRes);
 };
