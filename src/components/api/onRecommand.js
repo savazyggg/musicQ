@@ -1,16 +1,14 @@
 export const onRecommand = async (accessToken) => {
-  console.log("api ", accessToken);
-  const categoryParams = {
+  const URL =
+    "https://api.spotify.com/v1/recommendations?limit=30&market=KR&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=hiphop&seed_tracks=0c6xIDDpzE81m2q797ordA";
+  const params = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + accessToken,
     },
   };
-  let RecommandID = await fetch(
-    "https://api.spotify.com/v1/browse/categories?country=KR&locale=sv_SE&limit=10&offset=5",
-    categoryParams
-  );
-  let RecommandIDRes = await RecommandID.json();
-  return RecommandIDRes.categories.items;
+  const fetchApi = await fetch(URL, params);
+  const res = await fetchApi.json();
+  return res.tracks;
 };

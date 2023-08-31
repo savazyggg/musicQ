@@ -13,10 +13,8 @@ const Footer = () => {
   return (
     <SFooter>
       <div style={{ marginRight: 0 }}>
-        <Image src={imgUrl} marginRight={1} height="50px" />
-        <SText fontWeight={600} marginLeft="8px">
-          The mystery
-        </SText>
+        <Image src={imgUrl} marginRight={2} height="58px" borderRadius="5px" />
+        <SText fontWeight={600}>The mystery</SText>
       </div>
 
       <div style={{ marginLeft: 0 }}>
@@ -80,7 +78,7 @@ const SFooter = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: rgba(176, 168, 185, ${opacity.heavy});
-  height: 60px;
+  height: 70px;
   width: 100%;
   z-index: 2;
   backdrop-filter: blur(10px);
@@ -92,6 +90,8 @@ const SFooter = styled.div`
 `;
 
 const SText = styled(Text)`
+  margin: 0;
+  padding: 0;
   div {
     width: 38px;
     height: 38px;

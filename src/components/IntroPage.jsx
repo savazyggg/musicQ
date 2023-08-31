@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { onRecommand } from "./api/onRecommand";
-import { Image, Text, Grid, GridItem, theme } from "@chakra-ui/react";
+import { Grid, Text } from "@chakra-ui/react";
 import { onRecommandDetail } from "./api/onRecommandDetail";
-import { SContainer } from "./common/style";
+import { SContainer, STitle } from "./common/style";
+import { TwoColGrid } from "./ui/TwoColGird";
+import { theme } from "./common/core";
 
 const IntroPage = ({ isLogin }) => {
   const [list, setList] = useState([]);
@@ -19,22 +21,37 @@ const IntroPage = ({ isLogin }) => {
 
   return (
     <SContainer>
-      <h1 style={{ margin: "20px auto" }}>둘러보기</h1>
-      <Grid marginBottom="70px" templateColumns="repeat(2, 1fr)" gap={5}>
+      <STitle style={{ margin: "15px" }}>둘러보기</STitle>
+      {/* <Grid marginBottom="90px" templateColumns="repeat(2, 1fr)" gap={5}> */}
+      <div style={{ display: "flex", overflow: "auto" }}>
         {list &&
           list.map((el) => (
-            <GridItem
-              key={el.id}
-              colSpan={1}
+            <TwoColGrid
+              key={el.album.id}
               onClick={() => onRecommandDetail(access_token, el.href)}
+              src={el.album.images[1].url}
             >
-              <Image src={el.icons[0].url} marginRight={1} height={220} />
-              <Text>{el.name}</Text>
-            </GridItem>
+              <SText marginTop={1}>
+                {el.name.length > 16
+                  ? el.name.substring(0, 16) + " ..."
+                  : el.name}
+              </SText>
+              <SText marginTop={0} color={theme.subFontColor}>
+                {el.artists[0].name > 16
+                  ? el.artists[0].name.substring(0, 16) + " ..."
+                  : el.artists[0].name}
+              </SText>
+            </TwoColGrid>
           ))}
-      </Grid>
+      </div>
     </SContainer>
   );
 };
 
 export default IntroPage;
+
+const SText = styled(Text)`
+whiteSpace: "nowrap",
+overflow: "hidden",
+textOverflow: "ellipsis",
+`;

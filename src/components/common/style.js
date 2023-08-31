@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { opacity } from "./core";
+import { opacity, theme } from "./core";
 
 export const SContainer = styled.div`
   width: 100%;
@@ -8,6 +8,7 @@ export const SContainer = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   height: calc(100vh - 35px);
+
   ::-webkit-scrollbar {
     width: 5px;
     background-color: transparent;
@@ -16,4 +17,10 @@ export const SContainer = styled.div`
   ::-webkit-scrollbar-thumb {
     background-color: rgba(176, 168, 185, ${opacity.heavy});
   }
+`;
+
+export const STitle = styled.h1`
+  font-size: 24px;
+  font-weight: 700;
+  color: ${theme.fontColor};
 `;
