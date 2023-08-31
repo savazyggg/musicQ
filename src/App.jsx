@@ -5,6 +5,9 @@ import IntroPage from "./components/IntroPage";
 import MainPage from "./components/MainPage";
 import Layout from "./Layout";
 import { onLogin } from "./components/api/onLogin";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   const [isLogin, setIsLogin] = useState(null);
@@ -34,9 +37,9 @@ function App() {
   ]);
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-    </>
+    </QueryClientProvider>
   );
 }
 

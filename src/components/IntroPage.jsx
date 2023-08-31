@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { onRecommand } from "./api/onRecommand";
-import { Image, Text, Grid, GridItem } from "@chakra-ui/react";
+import { Image, Text, Grid, GridItem, theme } from "@chakra-ui/react";
 import { onRecommandDetail } from "./api/onRecommandDetail";
 import { SContainer } from "./common/style";
 
@@ -20,7 +20,7 @@ const IntroPage = ({ isLogin }) => {
   return (
     <SContainer>
       <h1 style={{ margin: "20px auto" }}>둘러보기</h1>
-      <Grid margin="0 auto" templateColumns="repeat(2, 1fr)" gap={5}>
+      <Grid marginBottom="70px" templateColumns="repeat(2, 1fr)" gap={5}>
         {list &&
           list.map((el) => (
             <GridItem
