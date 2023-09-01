@@ -21,14 +21,44 @@ const IntroPage = ({ isLogin }) => {
 
   return (
     <SContainer>
-      <div style={{ marginBottom: "50px" }}>
-        <STitle style={{ margin: "15px" }}>둘러보기</STitle>
+      <div style={{ marginBottom: "60px" }}>
+        <STitle style={{ marginTop: "15px", fontSize: "30px" }}>
+          오늘의 신곡
+        </STitle>
         {/* <Grid marginBottom="90px" templateColumns="repeat(2, 1fr)" gap={5}> */}
 
-        <div style={{ display: "flex", overflow: "auto" }}>
+        <SContainerX style={{ display: "flex", overflow: "auto" }}>
           {list &&
             list.map((el) => (
               <TwoColGrid
+                width="335"
+                height="200"
+                releaseDate={el.album.release_date}
+                key={el.album.id}
+                onClick={() => onRecommandDetail(access_token, el.href)}
+                src={el.album.images[1].url}
+              >
+                <SText marginTop={1} fontSize="24px" fontWeight={600}>
+                  {el.name.length > 23
+                    ? el.name.substring(0, 23) + " ..."
+                    : el.name}
+                </SText>
+                <SText marginTop={0} color={theme.subFontColor}>
+                  {el.artists[0].name > 40
+                    ? el.artists[0].name.substring(0, 40) + " ..."
+                    : el.artists[0].name}
+                </SText>
+              </TwoColGrid>
+            ))}
+        </SContainerX>
+        <STitle style={{ margin: "5px" }}>둘러보기</STitle>
+        {/* <Grid marginBottom="90px" templateColumns="repeat(2, 1fr)" gap={5}> */}
+
+        <SContainerX style={{ display: "flex", overflow: "auto" }}>
+          {list &&
+            list.map((el) => (
+              <TwoColGrid
+                width="160px"
                 key={el.album.id}
                 onClick={() => onRecommandDetail(access_token, el.href)}
                 src={el.album.images[1].url}
@@ -45,14 +75,15 @@ const IntroPage = ({ isLogin }) => {
                 </SText>
               </TwoColGrid>
             ))}
-        </div>
-        <STitle style={{ margin: "15px" }}>둘러보기</STitle>
+        </SContainerX>
+        <STitle style={{ margin: "5px" }}>둘러보기</STitle>
         {/* <Grid marginBottom="90px" templateColumns="repeat(2, 1fr)" gap={5}> */}
 
-        <div style={{ display: "flex", overflow: "auto" }}>
+        <SContainerX style={{ display: "flex", overflow: "auto" }}>
           {list &&
             list.map((el) => (
               <TwoColGrid
+                width="160px"
                 key={el.album.id}
                 onClick={() => onRecommandDetail(access_token, el.href)}
                 src={el.album.images[1].url}
@@ -69,31 +100,7 @@ const IntroPage = ({ isLogin }) => {
                 </SText>
               </TwoColGrid>
             ))}
-        </div>
-        <STitle style={{ margin: "15px" }}>둘러보기</STitle>
-        {/* <Grid marginBottom="90px" templateColumns="repeat(2, 1fr)" gap={5}> */}
-
-        <div style={{ display: "flex", overflow: "auto" }}>
-          {list &&
-            list.map((el) => (
-              <TwoColGrid
-                key={el.album.id}
-                onClick={() => onRecommandDetail(access_token, el.href)}
-                src={el.album.images[1].url}
-              >
-                <SText marginTop={1}>
-                  {el.name.length > 16
-                    ? el.name.substring(0, 16) + " ..."
-                    : el.name}
-                </SText>
-                <SText marginTop={0} color={theme.subFontColor}>
-                  {el.artists[0].name > 16
-                    ? el.artists[0].name.substring(0, 16) + " ..."
-                    : el.artists[0].name}
-                </SText>
-              </TwoColGrid>
-            ))}
-        </div>
+        </SContainerX>
       </div>
     </SContainer>
   );
@@ -105,4 +112,15 @@ const SText = styled(Text)`
 whiteSpace: "nowrap",
 overflow: "hidden",
 textOverflow: "ellipsis",
+`;
+
+const SContainerX = styled.div`
+  ::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(176, 168, 185, 0);
+  }
 `;
