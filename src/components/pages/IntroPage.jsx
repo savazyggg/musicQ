@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
-import { onRecommand } from "./api/onRecommand";
+import { onRecommand } from "../api/onRecommand";
 import { Grid, Text } from "@chakra-ui/react";
-import { onRecommandDetail } from "./api/onRecommandDetail";
-import { SContainer, STitle } from "./common/style";
-import { TwoColGrid } from "./ui/TwoColGird";
-import { theme } from "./common/core";
+import { onRecommandDetail } from "../api/onRecommandDetail";
+import { SContainer, STitle } from "../common/style";
+import { TwoColGrid } from "../ui/atoms/TwoColGird";
+import { theme } from "../common/core";
 
 const IntroPage = ({ isLogin }) => {
   const [list, setList] = useState([]);
@@ -23,13 +23,19 @@ const IntroPage = ({ isLogin }) => {
     <SContainer>
       <div style={{ marginBottom: "60px" }}>
         <STitle style={{ marginTop: "15px", fontSize: "30px" }}>
-          오늘의 신곡
+          둘러보기
         </STitle>
         {/* <Grid marginBottom="90px" templateColumns="repeat(2, 1fr)" gap={5}> */}
 
-        <SContainerX style={{ display: "flex", overflow: "auto" }}>
+        <SContainerX
+          style={{
+            display: "flex",
+            overflow: "auto",
+            margin: "0 -20px",
+          }}
+        >
           {list &&
-            list.map((el) => (
+            list.map((el, i) => (
               <TwoColGrid
                 width="335"
                 height="200"
@@ -51,10 +57,19 @@ const IntroPage = ({ isLogin }) => {
               </TwoColGrid>
             ))}
         </SContainerX>
-        <STitle style={{ margin: "5px" }}>둘러보기</STitle>
+
+        <STitle style={{ margin: "5px" }}>What's New</STitle>
         {/* <Grid marginBottom="90px" templateColumns="repeat(2, 1fr)" gap={5}> */}
 
-        <SContainerX style={{ display: "flex", overflow: "auto" }}>
+        <SContainerX
+          style={{
+            display: "flex",
+            overflow: "auto",
+
+            padding: "5px",
+            borderRadius: "7px",
+          }}
+        >
           {list &&
             list.map((el) => (
               <TwoColGrid
@@ -76,10 +91,15 @@ const IntroPage = ({ isLogin }) => {
               </TwoColGrid>
             ))}
         </SContainerX>
-        <STitle style={{ margin: "5px" }}>둘러보기</STitle>
+        <STitle style={{ margin: "5px" }}>Here's pick</STitle>
         {/* <Grid marginBottom="90px" templateColumns="repeat(2, 1fr)" gap={5}> */}
 
-        <SContainerX style={{ display: "flex", overflow: "auto" }}>
+        <SContainerX
+          style={{
+            display: "flex",
+            overflow: "auto",
+          }}
+        >
           {list &&
             list.map((el) => (
               <TwoColGrid

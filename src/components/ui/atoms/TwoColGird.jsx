@@ -1,5 +1,5 @@
 import { Image, GridItem, Text } from "@chakra-ui/react";
-import { theme } from "../common/core";
+import { opacity, theme } from "../../common/core";
 
 export const TwoColGrid = ({
   src,
@@ -20,6 +20,12 @@ export const TwoColGrid = ({
             colSpan={1}
             onClick={onClick}
             margin="0 5px"
+            _hover={{
+              backgroundColor: `rgba(176, 168, 185, ${opacity.heavy})`,
+            }}
+            _active={{
+              backgroundColor: `rgba(176, 168, 185, ${opacity.sligth})`,
+            }}
           >
             {children}
             <Image
@@ -28,7 +34,6 @@ export const TwoColGrid = ({
               height={height}
               borderRadius="7px"
               objectFit="cover"
-              border="1px solid white"
             />
             <Text
               fontSize="9px"

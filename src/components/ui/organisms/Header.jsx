@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
-import { theme } from "./common/core";
-import { onSearch } from "./api/onSearch";
+import { theme } from "../../common/core";
+import { onSearch } from "../../api/onSearch";
 
 const Header = ({ isLogin }) => {
   const [findText, setFindText] = useState("");

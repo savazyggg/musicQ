@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
 import styled from "@emotion/styled";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+
 import { theme } from "./components/common/core";
+import Header from "./components/ui/organisms/Header";
+import Footer from "./components/ui/organisms/Footer";
 
 const Layout = ({ isLogin }) => {
   return (
@@ -29,6 +30,6 @@ const SLayOut = styled.main`
   margin: 0 auto;
   min-height: 100vh;
   * {
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "Roboto", sans-serif;
   }
 `;

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./components/ErrorPage";
-import IntroPage from "./components/IntroPage";
-import MainPage from "./components/MainPage";
+import ErrorPage from "./components/pages/ErrorPage";
+import IntroPage from "./components/pages/IntroPage";
+import RightNowPage from "./components/pages/RightNowPage";
 import Layout from "./Layout";
 import { onLogin } from "./components/api/onLogin";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -30,7 +30,7 @@ function App() {
         { index: true, element: <IntroPage isLogin={isLogin} /> },
         {
           path: "/main",
-          element: <MainPage />,
+          element: <RightNowPage />,
         },
       ],
     },
