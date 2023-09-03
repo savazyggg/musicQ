@@ -1,18 +1,20 @@
 import { Box, Image, Text, Flex } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { opacity, theme } from "../../common/core";
 import ListeningPage from "../../pages/ListeningPage";
+import { useNavigate } from "react-router-dom";
 
 const imgUrl =
   "https://cdn.primedia.co.za/primedia-broadcasting/image/upload/v1508240107/trefgdskgntu7j1vezjq.jpg";
 
-const Footer = () => {
+const Footer = ({ onClick }) => {
   const [isListen, setIsListen] = useState(false);
   const [listeningModal, setListeningModal] = useState(false);
   const onListenToggle = () => setIsListen(!isListen);
   const onListeningModalToggle = () => setListeningModal(!listeningModal);
-  console.log("listeningModal" + listeningModal);
+  const navigate = useNavigate();
   return (
     <>
       {listeningModal && <ListeningPage onClick={onListeningModalToggle} />}
@@ -88,7 +90,12 @@ const Footer = () => {
       <SFooter
         style={{ borderTop: `1px solid rgba(176, 168, 185, ${opacity.heavy})` }}
       >
-        <ContentContainer>
+        <ContentContainer
+          onClick={() => {
+            onClick("지금 듣기");
+            navigate("/now");
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
@@ -105,13 +112,18 @@ const Footer = () => {
           <Text fontSize={13}>지금 듣기</Text>
         </ContentContainer>
 
-        <ContentContainer>
+        <ContentContainer
+          onClick={() => {
+            onClick("둘러보기");
+            navigate("/");
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
-            width="100"
-            height="100"
+            width="55"
+            height="55"
             viewBox="0 0 50 50"
           >
             <path
@@ -121,7 +133,13 @@ const Footer = () => {
           </svg>
           <Text fontSize={13}>둘러보기</Text>
         </ContentContainer>
-        <ContentContainer>
+
+        <ContentContainer
+          onClick={() => {
+            onClick("검색");
+            navigate("/search");
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
@@ -137,7 +155,13 @@ const Footer = () => {
           </svg>
           <Text fontSize={13}>검색</Text>
         </ContentContainer>
-        <ContentContainer>
+
+        <ContentContainer
+          onClick={() => {
+            onClick("보관함");
+            navigate("/mylist");
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"

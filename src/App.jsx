@@ -6,11 +6,15 @@ import RightNowPage from "./components/pages/RightNowPage";
 import Layout from "./Layout";
 import { onLogin } from "./components/api/onLogin";
 import { QueryClient, QueryClientProvider } from "react-query";
+import MyListPage from "./components/pages/MyListPage";
+import SearchPage from "./components/pages/SearchPage";
 
 const queryClient = new QueryClient();
 
 function App() {
   const [isLogin, setIsLogin] = useState(null);
+  const [headerActive, setHeaderActive] = useState(true);
+  const onHeaderActive = (value) => setHeaderActive(value);
 
   useEffect(() => {
     const onGetToken = async () => {
@@ -24,13 +28,26 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout isLogin={isLogin} />,
+      element: <Layout isLogin={isLogin} headerActive={headerActive} />,
       errorElement: <ErrorPage />,
       children: [
-        { index: true, element: <IntroPage isLogin={isLogin} /> },
         {
-          path: "/main",
+          index: true,
+          element: (
+            <IntroPage isLogin={isLogin} onHeaderActive={onHeaderActive} />
+          ),
+        },
+        {
+          path: "/now",
           element: <RightNowPage />,
+        },
+        {
+          path: "/mylist",
+          element: <MyListPage />,
+        },
+        {
+          path: "/search",
+          element: <SearchPage />,
         },
       ],
     },

@@ -1,7 +1,7 @@
 import React from "react";
 
-const MainPage = () => {
-  return <div>mainPage</div>;
+const RightNowPage = () => {
+  return <div>what's righnow</div>;
 };
 
-export default MainPage;
+export default RightNowPage;

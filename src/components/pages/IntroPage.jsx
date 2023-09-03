@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { onRecommand } from "../api/onRecommand";
 import { Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import { onRecommandDetail } from "../api/onRecommandDetail";
@@ -7,7 +7,7 @@ import { SContainer, STitle } from "../common/style";
 import { TwoColGrid } from "../ui/atoms/TwoColGird";
 import { opacity, theme } from "../common/core";
 
-const IntroPage = ({ isLogin }) => {
+const IntroPage = ({ isLogin, onHeaderActive }) => {
   const [list, setList] = useState(null);
   const { access_token } = isLogin || {};
   useEffect(() => {
@@ -17,11 +17,31 @@ const IntroPage = ({ isLogin }) => {
     };
     onRecommandCall();
   }, [isLogin]);
-  console.log(list);
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = containerRef.current.scrollTop;
+      // 스크롤 위치에 따른 로직 처리
+      scrollTop > 10 ? onHeaderActive(false) : onHeaderActive(true);
+    };
+
+    const containerElement = containerRef.current;
+    if (containerElement) {
+      containerElement.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (containerElement) {
+        containerElement.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
 
   return (
-    <SContainer>
-      <div style={{ marginBottom: "140px" }}>
+    <SContainer ref={containerRef}>
+      <div style={{ margin: "40px 0 120px 0" }}>
         <STitle style={{ marginTop: "15px", fontSize: "30px" }}>
           둘러보기
         </STitle>

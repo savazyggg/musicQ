@@ -4,13 +4,21 @@ import styled from "@emotion/styled";
 import { theme } from "./components/common/core";
 import Header from "./components/ui/organisms/Header";
 import Footer from "./components/ui/organisms/Footer";
+import { useState } from "react";
 
-const Layout = ({ isLogin }) => {
+const Layout = ({ isLogin, headerActive }) => {
+  const [whereNow, setWhereNow] = useState("둘러보기");
+  const onWhereNowChange = (value) => setWhereNow(value);
+
   return (
     <SLayOut>
-      <Header isLogin={isLogin} />
+      <Header
+        isLogin={isLogin}
+        whereNow={whereNow}
+        headerActive={headerActive}
+      />
       <Outlet />
-      <Footer />
+      <Footer onClick={onWhereNowChange} />
     </SLayOut>
   );
 };
