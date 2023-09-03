@@ -17,7 +17,9 @@ const Footer = ({ onClick }) => {
   const navigate = useNavigate();
   return (
     <>
-      {listeningModal && <ListeningPage onClick={onListeningModalToggle} />}
+      {listeningModal && (
+        <ListeningPage onClick={onListeningModalToggle} src={imgUrl} />
+      )}
       <SFooter
         style={{
           marginBottom: "70px",
