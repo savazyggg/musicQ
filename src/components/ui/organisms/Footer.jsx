@@ -2,31 +2,44 @@ import { Box, Image, Text, Flex } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { opacity, theme } from "../../common/core";
+import ListeningPage from "../../pages/ListeningPage";
 
 const imgUrl =
   "https://cdn.primedia.co.za/primedia-broadcasting/image/upload/v1508240107/trefgdskgntu7j1vezjq.jpg";
 
 const Footer = () => {
   const [isListen, setIsListen] = useState(false);
+  const [listeningModal, setListeningModal] = useState(false);
   const onListenToggle = () => setIsListen(!isListen);
-  console.log(isListen);
+  const onListeningModalToggle = () => setListeningModal(!listeningModal);
+  console.log("listeningModal" + listeningModal);
   return (
     <>
-      <SFooter style={{ marginBottom: "70px" }}>
-        <div style={{ marginRight: 0 }}>
+      {listeningModal && <ListeningPage onClick={onListeningModalToggle} />}
+      <SFooter
+        style={{
+          marginBottom: "70px",
+        }}
+        active
+      >
+        <div
+          style={{ marginRight: 0, width: "80%" }}
+          onClick={onListeningModalToggle}
+        >
           <Image
             src={imgUrl}
             marginRight={2}
             height="58px"
             borderRadius="5px"
           />
+
           <SText fontWeight={600}>The mystery</SText>
         </div>
 
         <div style={{ marginLeft: 0 }}>
           {isListen ? (
             <SText>
-              <div onClick={onListenToggle}>
+              <div style={{ margin: "0" }} onClick={onListenToggle}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -42,11 +55,11 @@ const Footer = () => {
             </SText>
           ) : (
             <SText>
-              <div onClick={onListenToggle}>
+              <div style={{ margin: "0" }} onClick={onListenToggle}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="25"
+                  height="25"
                   viewBox="0 0 24 24"
                 >
                   <path d="M3 22v-20l18 10-18 10z" fill={theme.fontColor} />
@@ -59,8 +72,8 @@ const Footer = () => {
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="25"
+                height="25"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -163,6 +176,10 @@ const SFooter = styled.div`
     align-items: center;
     margin: 0 20px;
   }
+  :active {
+    background-color: ${(prop) =>
+      prop.active && `rgba(176, 168, 185, ${opacity.wavy})`};
+  }
 `;
 
 const SText = styled(Text)`
@@ -171,7 +188,6 @@ const SText = styled(Text)`
   div {
     width: 38px;
     height: 38px;
-    margin: 0;
     display: flex;
     justify-content: center;
     border-radius: 50px;
