@@ -12,3 +12,9 @@ export const opacity = {
   wavy: 0.6,
   heavy: 0.3,
 };
+
+export const substring = {
+  s16: 16,
+  s23: 23,
+  s40: 40,
+};

@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "pixcell";
+  src: url("PIXELADE.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: "mono";
+  src: url("PixelOperatorMono.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "sc";
+  src: url("PixelOperatorSC-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "jogan";
+  src: url("JoganSoft-Regular.ttf") format("truetype");
+}

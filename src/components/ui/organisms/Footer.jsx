@@ -6,10 +6,17 @@ import { opacity, theme } from "../../common/core";
 import ListeningPage from "../../pages/ListeningPage";
 import { useNavigate } from "react-router-dom";
 
-const imgUrl =
+const songImg =
   "https://cdn.primedia.co.za/primedia-broadcasting/image/upload/v1508240107/trefgdskgntu7j1vezjq.jpg";
+const songTitle = "The mystery";
+const songArtist = "Ariana Grande";
 
 const Footer = ({ onClick }) => {
+  const [listeningSrc, setListeningSrc] = useState({
+    songImg,
+    songTitle,
+    songArtist,
+  });
   const [isListen, setIsListen] = useState(false);
   const [listeningModal, setListeningModal] = useState(false);
   const onListenToggle = () => setIsListen(!isListen);
@@ -18,7 +25,7 @@ const Footer = ({ onClick }) => {
   return (
     <>
       {listeningModal && (
-        <ListeningPage onClick={onListeningModalToggle} src={imgUrl} />
+        <ListeningPage onClick={onListeningModalToggle} src={listeningSrc} />
       )}
       <SFooter
         style={{
@@ -31,13 +38,13 @@ const Footer = ({ onClick }) => {
           onClick={onListeningModalToggle}
         >
           <Image
-            src={imgUrl}
+            src={songImg}
             marginRight={2}
             height="58px"
             borderRadius="5px"
           />
 
-          <SText fontWeight={600}>The mystery</SText>
+          <SText fontWeight={600}>{listeningSrc.songTitle}</SText>
         </div>
 
         <div style={{ marginLeft: 0 }}>
@@ -187,12 +194,13 @@ const Footer = ({ onClick }) => {
 export default Footer;
 
 const SFooter = styled.div`
+  focus: pointer;
   position: absolute;
   max-width: 500px;
   display: flex;
   bottom: 0;
   justify-content: space-between;
-  background-color: rgba(176, 168, 185, ${opacity.heavy});
+  background-color: rgba(176, 168, 185, 0.1);
   height: 70px;
   width: 100%;
   z-index: 2;

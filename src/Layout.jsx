@@ -5,18 +5,15 @@ import { theme } from "./components/common/core";
 import Header from "./components/ui/organisms/Header";
 import Footer from "./components/ui/organisms/Footer";
 import { useState } from "react";
+import "./Font.css";
 
-const Layout = ({ isLogin, headerActive }) => {
+const Layout = ({ headerActive }) => {
   const [whereNow, setWhereNow] = useState("둘러보기");
   const onWhereNowChange = (value) => setWhereNow(value);
 
   return (
     <SLayOut>
-      <Header
-        isLogin={isLogin}
-        whereNow={whereNow}
-        headerActive={headerActive}
-      />
+      <Header whereNow={whereNow} headerActive={headerActive} />
       <Outlet />
       <Footer onClick={onWhereNowChange} />
     </SLayOut>
@@ -38,6 +35,6 @@ const SLayOut = styled.main`
   margin: 0 auto;
   min-height: 100vh;
   * {
-    font-family: "Roboto", sans-serif;
+    font-family: "jogan";
   }
 `;
