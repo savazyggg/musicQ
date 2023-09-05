@@ -39,15 +39,21 @@ function App() {
         },
         {
           path: "/now",
-          element: <RightNowPage />,
+          element: (
+            <RightNowPage isLogin={isLogin} onHeaderActive={onHeaderActive} />
+          ),
         },
         {
           path: "/mylist",
-          element: <MyListPage />,
+          element: (
+            <MyListPage isLogin={isLogin} onHeaderActive={onHeaderActive} />
+          ),
         },
         {
           path: "/search",
-          element: <SearchPage />,
+          element: (
+            <SearchPage isLogin={isLogin} onHeaderActive={onHeaderActive} />
+          ),
         },
       ],
     },
