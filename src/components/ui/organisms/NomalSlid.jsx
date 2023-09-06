@@ -24,7 +24,7 @@ const NomalSlid = ({ isLogin, genre, title, substring, width }) => {
           margin: "0 -20px",
         }}
       >
-        <SContainerX>
+        <SContainerX style={{ margin: "0 -4px" }}>
           {list &&
             list.map((el) => (
               <OneRowGrid
