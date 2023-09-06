@@ -6,6 +6,7 @@ import { opacity, theme } from "../../common/core";
 
 const InputBox = ({ onChange, searchInput, isLogin, onSearchDataUpadate }) => {
   const onSearchClick = async () => {
+    if (searchInput == "") return;
     const data = await onSearch(isLogin, searchInput);
     onSearchDataUpadate({
       albums: data.albums,

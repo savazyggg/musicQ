@@ -18,3 +18,7 @@ export const substring = {
   s23: 23,
   s40: 40,
 };
+
+export const borderRadius = {};
+
+export const imgScale = {};

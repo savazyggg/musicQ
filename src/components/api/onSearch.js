@@ -9,7 +9,7 @@ export const onSearch = async (accessToken, searchInput) => {
   let artistID = await fetch(
     "https://api.spotify.com/v1/search?q=" +
       searchInput +
-      "&type=album%2Ctrack%2Cartist&market=KR",
+      "&type=album%2Cartist&market=KR",
     artistParams
   );
   let artistIDRes = await artistID.json();
