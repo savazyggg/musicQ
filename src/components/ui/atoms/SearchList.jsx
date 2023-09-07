@@ -1,8 +1,6 @@
-import React from "react";
 import { Image, Text } from "@chakra-ui/react";
 import { theme } from "../../common/core";
 
-//Todo: album이랑 아티스트 나누기, 버튼 토글로 컴포넌트 렌더링 제어
 const SearchList = ({ imgSrc, albumName, artist, albumType, type }) => {
   return (
     <>
@@ -10,6 +8,7 @@ const SearchList = ({ imgSrc, albumName, artist, albumType, type }) => {
         <Image
           src={imgSrc}
           width="80px"
+          height="80px"
           marginRight={2}
           borderRadius={type === "album" ? 7 : 50}
         />
@@ -20,12 +19,19 @@ const SearchList = ({ imgSrc, albumName, artist, albumType, type }) => {
             justifyContent: "center",
           }}
         >
-          <Text margin={0}>
-            {albumName} - {albumType}
-          </Text>
-          <Text margin={0} color={theme.subFontColor}>
-            {type} ✦ {artist}
-          </Text>
+          {albumType ? (
+            <>
+              <Text>{albumName}</Text>
+              <Text color={theme.subFontColor}>
+                {artist} ✦ {albumType}
+              </Text>
+            </>
+          ) : (
+            <>
+              <Text>{albumName}</Text>
+              <Text color={theme.subFontColor}>{type}</Text>
+            </>
+          )}
         </div>
       </div>
       <Text fontWeight="bold" margin="auto 0">

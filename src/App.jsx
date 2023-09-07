@@ -8,6 +8,8 @@ import { onLogin } from "./components/api/onLogin";
 import { QueryClient, QueryClientProvider } from "react-query";
 import MyListPage from "./components/pages/MyListPage";
 import SearchPage from "./components/pages/SearchPage";
+import ArtistPage from "./components/pages/ArtistPage";
+import AlbumPage from "./components/pages/AlbumPage";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +55,18 @@ function App() {
           path: "/search",
           element: (
             <SearchPage isLogin={isLogin} onHeaderActive={onHeaderActive} />
+          ),
+        },
+        {
+          path: "/artist",
+          element: (
+            <ArtistPage isLogin={isLogin} onHeaderActive={onHeaderActive} />
+          ),
+        },
+        {
+          path: "/album",
+          element: (
+            <AlbumPage isLogin={isLogin} onHeaderActive={onHeaderActive} />
           ),
         },
       ],

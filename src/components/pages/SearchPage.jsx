@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { onSearchDetail } from "../api/onSearchDetail";
 import { substring } from "../common/core";
 import Button from "../ui/atoms/Button";
 import InputBox from "../ui/atoms/InputBox";
-import SearchLists from "../ui/molecules/SearchLists";
+import SearchListsArtists from "../ui/molecules/SearchLists";
+import SearchListsAlbums from "../ui/molecules/SearchListsAlbums";
 import SectionLayout from "../ui/molecules/SectionLayout";
 import TwoColGridLists from "../ui/organisms/TwoColGridLists";
 
@@ -18,6 +20,13 @@ const SearchPage = ({ isLogin, onHeaderActive }) => {
     setSearchType(e.target.value);
     setActiveButton(e.target.value);
   };
+
+  //onSearchDetailClick으로 상태관리 라이브러리에 요청할 url저장 할것.
+  const onSearchArtistsClick = async (api) => {
+    const result = await onSearchDetail(access_token, api);
+    console.log(result);
+  };
+
   console.log(searchData);
   return (
     <SectionLayout
@@ -48,7 +57,19 @@ const SearchPage = ({ isLogin, onHeaderActive }) => {
               아티스트
             </Button>
           </div>
-          <SearchLists searchData={searchData} searchType={searchType} />
+          {searchType === "album" && (
+            <SearchListsAlbums
+              searchData={searchData}
+              searchType={searchType}
+            />
+          )}
+          {searchType === "artist" && (
+            <SearchListsArtists
+              searchData={searchData}
+              searchType={searchType}
+              onClick={onSearchArtistsClick}
+            />
+          )}
         </>
       ) : (
         <TwoColGridLists
