@@ -1,6 +1,6 @@
 import SearchList from "../atoms/SearchList";
 
-const SearchListsAlbums = ({ searchData }) => {
+const SearchListsAlbums = ({ searchData, onClick }) => {
   const albums = searchData.albums.items;
 
   return (
@@ -14,6 +14,7 @@ const SearchListsAlbums = ({ searchData }) => {
               justifyContent: "space-between",
               padding: "5px 0",
             }}
+            onClick={() => onClick(el.href)}
           >
             <SearchList
               imgSrc={el.images[1].url}

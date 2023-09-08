@@ -3,6 +3,7 @@ import SearchList from "../atoms/SearchList";
 
 const SearchListsArtists = ({ searchData, onClick }) => {
   const artists = searchData.artists.items;
+
   return (
     <div>
       {artists.map((el) => {

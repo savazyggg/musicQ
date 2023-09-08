@@ -21,4 +21,7 @@ const SButton = styled.button`
   border-radius: 7px;
   background-color: ${(props) =>
     props.active ? `${theme.subFontColor}` : "transparent"};
+  &:active {
+    background-color: ${theme.subFontColor};
+  }
 `;

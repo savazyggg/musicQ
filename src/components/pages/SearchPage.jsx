@@ -3,7 +3,7 @@ import { onSearchDetail } from "../api/onSearchDetail";
 import { substring } from "../common/core";
 import Button from "../ui/atoms/Button";
 import InputBox from "../ui/atoms/InputBox";
-import SearchListsArtists from "../ui/molecules/SearchLists";
+import SearchListsArtists from "../ui/molecules/SearchListsArtists";
 import SearchListsAlbums from "../ui/molecules/SearchListsAlbums";
 import SectionLayout from "../ui/molecules/SectionLayout";
 import TwoColGridLists from "../ui/organisms/TwoColGridLists";
@@ -21,8 +21,8 @@ const SearchPage = ({ isLogin, onHeaderActive }) => {
     setActiveButton(e.target.value);
   };
 
-  //onSearchDetailClick으로 상태관리 라이브러리에 요청할 url저장 할것.
-  const onSearchArtistsClick = async (api) => {
+  //상태관리 라이브러리에 요청할 url저장 할것, 앨범은 트랙이 있는데 아티스트는 트랙이 없음.. 다른 api찾아봐야됨
+  const onSearchDetailClick = async (api) => {
     const result = await onSearchDetail(access_token, api);
     console.log(result);
   };
@@ -61,13 +61,13 @@ const SearchPage = ({ isLogin, onHeaderActive }) => {
             <SearchListsAlbums
               searchData={searchData}
               searchType={searchType}
+              onClick={onSearchDetailClick}
             />
           )}
           {searchType === "artist" && (
             <SearchListsArtists
               searchData={searchData}
               searchType={searchType}
-              onClick={onSearchArtistsClick}
             />
           )}
         </>
