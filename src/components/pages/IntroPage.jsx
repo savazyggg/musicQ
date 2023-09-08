@@ -1,3 +1,4 @@
+import { onRecommand } from "../api/onRecommand";
 import { substring } from "../common/core";
 import SectionLayout from "../ui/molecules/SectionLayout";
 import NomalSlid from "../ui/organisms/NomalSlid";
@@ -24,6 +25,7 @@ const IntroPage = ({ isLogin, onHeaderActive }) => {
         genre="hiphop"
         width="160px"
         substring={substring.s16}
+        func={onRecommand}
       />
       <NomalSlid
         isLogin={isLogin}
@@ -31,6 +33,7 @@ const IntroPage = ({ isLogin, onHeaderActive }) => {
         genre="hiphop"
         width="160px"
         substring={substring.s16}
+        func={onRecommand}
       />
       <WideListSlid
         isLogin={isLogin}

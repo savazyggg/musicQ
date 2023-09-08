@@ -2,20 +2,11 @@ import { Grid, theme } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { onRecommand } from "../../api/onRecommand";
 import { SText, STitle } from "../../common/style";
+import useGetApi from "../../hooks/useGetApi";
 import OneRowGrid from "../atoms/OneRowGrid";
 
 const TwoColGridLists = ({ isLogin, genre, title, substring, width }) => {
-  const [list, setList] = useState(null);
-
-  const { access_token } = isLogin || {};
-  useEffect(() => {
-    const onRecommandCall = async () => {
-      const result = await onRecommand(access_token, genre);
-
-      setList(result);
-    };
-    onRecommandCall();
-  }, [isLogin]);
+  const { list } = useGetApi({ func: onRecommand, api: genre, isLogin });
 
   return (
     <>

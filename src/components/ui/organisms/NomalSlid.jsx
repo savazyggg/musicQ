@@ -4,9 +4,9 @@ import { theme } from "../../common/core";
 import { SContainerX, SText, STitle } from "../../common/style";
 import useGetApi from "../../hooks/useGetApi";
 import OneRowGrid from "../atoms/OneRowGrid";
-const NomalSlid = ({ isLogin, title, substring, width, genre }) => {
-  const { list } = useGetApi({ func: onRecommand, api: genre, isLogin });
-
+const NomalSlid = ({ isLogin, title, substring, width, genre, func }) => {
+  const { list } = useGetApi({ func: func, api: genre, isLogin });
+  console.log(list);
   return (
     <>
       <STitle style={{ margin: "5px" }}>{title}</STitle>
