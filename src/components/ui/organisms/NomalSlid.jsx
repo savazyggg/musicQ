@@ -2,19 +2,10 @@ import { useEffect, useState } from "react";
 import { onRecommand } from "../../api/onRecommand";
 import { theme } from "../../common/core";
 import { SContainerX, SText, STitle } from "../../common/style";
+import useGetApi from "../../hooks/useGetApi";
 import OneRowGrid from "../atoms/OneRowGrid";
-const NomalSlid = ({ isLogin, genre, title, substring, width }) => {
-  const [list, setList] = useState(null);
-
-  const { access_token } = isLogin || {};
-  useEffect(() => {
-    const onRecommandCall = async () => {
-      const result = await onRecommand(access_token, genre);
-
-      setList(result);
-    };
-    onRecommandCall();
-  }, [isLogin]);
+const NomalSlid = ({ isLogin, title, substring, width, genre }) => {
+  const { list } = useGetApi({ func: onRecommand, api: genre, isLogin });
 
   return (
     <>

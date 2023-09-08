@@ -3,6 +3,7 @@ import { theme } from "@chakra-ui/react";
 import { TwoColGrid } from "../atoms/TwoColGird";
 import { onRecommand } from "../../api/onRecommand";
 import { SContainerX, SText, STitle } from "../../common/style";
+import useGetApi from "../../hooks/useGetApi";
 
 const WideSlid = ({
   isLogin,
@@ -12,17 +13,7 @@ const WideSlid = ({
   substring2 = substring1,
   height,
 }) => {
-  const [list, setList] = useState(null);
-
-  const { access_token } = isLogin || {};
-  useEffect(() => {
-    const onRecommandCall = async () => {
-      const result = await onRecommand(access_token, genre);
-
-      setList(result);
-    };
-    onRecommandCall();
-  }, [isLogin]);
+  const { list } = useGetApi({ func: onRecommand, api: genre, isLogin });
 
   return (
     <>

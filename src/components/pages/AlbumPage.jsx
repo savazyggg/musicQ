@@ -4,7 +4,7 @@ import { onSearchDetail } from "../api/onSearchDetail";
 import { theme } from "../common/core";
 import SectionLayout from "../ui/molecules/SectionLayout";
 import Button from "../ui/atoms/Button";
-import { SText, STitle } from "../common/style";
+import { STitle } from "../common/style";
 
 const url = "https://api.spotify.com/v1/albums/6zXUDBGLbrB9Kgkw2Y3F7L";
 

@@ -4,7 +4,7 @@ import ErrorPage from "./components/pages/ErrorPage";
 import IntroPage from "./components/pages/IntroPage";
 import RightNowPage from "./components/pages/RightNowPage";
 import Layout from "./Layout";
-import { onLogin } from "./components/api/onLogin";
+import { useLogin } from "./components/api/onLogin";
 import { QueryClient, QueryClientProvider } from "react-query";
 import MyListPage from "./components/pages/MyListPage";
 import SearchPage from "./components/pages/SearchPage";
@@ -14,23 +14,14 @@ import AlbumPage from "./components/pages/AlbumPage";
 const queryClient = new QueryClient();
 
 function App() {
-  const [isLogin, setIsLogin] = useState(null);
+  const { isLogin } = useLogin();
   const [headerActive, setHeaderActive] = useState(true);
   const onHeaderActive = (value) => setHeaderActive(value);
-
-  useEffect(() => {
-    const onGetToken = async () => {
-      const token = await onLogin();
-      setIsLogin(token);
-    };
-
-    onGetToken();
-  }, []);
-
+  console.log(isLogin);
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout isLogin={isLogin} headerActive={headerActive} />,
+      element: <Layout headerActive={headerActive} />,
       errorElement: <ErrorPage />,
       children: [
         {

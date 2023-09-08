@@ -3,17 +3,11 @@ import { useEffect, useState } from "react";
 import { onRecommand } from "../../api/onRecommand";
 import { opacity, theme } from "../../common/core";
 import { SContainerX, STitle } from "../../common/style";
+import useGetApi from "../../hooks/useGetApi";
 
 const WideListSlid = ({ isLogin, genre, title, substring }) => {
-  const [list, setList] = useState(null);
-  const { access_token } = isLogin || {};
-  useEffect(() => {
-    const onRecommandCall = async () => {
-      const result = await onRecommand(access_token, genre);
-      setList(result);
-    };
-    onRecommandCall();
-  }, [isLogin]);
+  const { list } = useGetApi({ func: onRecommand, api: genre, isLogin });
+
   return (
     <>
       <STitle style={{ margin: "5px" }}>{title}</STitle>
