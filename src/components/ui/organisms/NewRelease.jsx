@@ -65,7 +65,9 @@ const NewRelease = ({
                     style={{
                       backgroundColor: "rgba(1, 1, 1, 0.3)",
                       padding: "2px 4px",
-                      borderRadius: "7px",
+                      borderRadius: "8px",
+                      borderTop: "1px solid rgba(255, 255, 255, 0.8)",
+                      borderRight: "1px solid rgba(255, 255, 255, 0.8)",
                     }}
                   >
                     <SText marginTop={1} fontSize="20px">
