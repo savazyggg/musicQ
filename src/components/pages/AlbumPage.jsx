@@ -5,21 +5,20 @@ import { theme } from "../common/core";
 import SectionLayout from "../ui/molecules/SectionLayout";
 import Button from "../ui/atoms/Button";
 import { STitle } from "../common/style";
+import useGetApi from "../hooks/useGetApi";
 
-const url = "https://api.spotify.com/v1/albums/6zXUDBGLbrB9Kgkw2Y3F7L";
+const URL = "https://api.spotify.com/v1/albums/6zXUDBGLbrB9Kgkw2Y3F7L";
 
 const AlbumPage = ({ isLogin, onHeaderActive }) => {
-  const [list, setList] = useState(null);
+  const { list, isLoading } = useGetApi({
+    func: onSearchDetail,
+    api: URL,
+    isLogin,
+  });
 
-  const { access_token } = isLogin || {};
-
-  useEffect(() => {
-    const onRecommandCall = async () => {
-      const result = await onSearchDetail(access_token, url);
-      setList(result);
-    };
-    onRecommandCall();
-  }, [isLogin]);
+  if (isLoading) {
+    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
+  }
 
   console.log(list);
   const downloadSong = async (url) => {
