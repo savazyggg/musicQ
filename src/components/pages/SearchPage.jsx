@@ -22,14 +22,14 @@ const SearchPage = ({ isLogin, onHeaderActive }) => {
 
   //상태관리 라이브러리에 요청할 url저장 할것, 앨범은 트랙이 있는데 아티스트는 트랙이 없음.. 다른 api찾아봐야됨
   const onSearchDetailClick = async (api) => {
-    const result = await onSearchDetail(isLogin, api);
+    const result = onSearchDetail(isLogin, api);
     console.log(result);
   };
 
   console.log(searchData);
   return (
     <SectionLayout
-      title="Search! what you curious"
+      title="Search! what you curious 🧐"
       onHeaderActive={onHeaderActive}
     >
       <InputBox

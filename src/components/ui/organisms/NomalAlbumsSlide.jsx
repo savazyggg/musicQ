@@ -3,13 +3,21 @@ import { theme } from "../../common/core";
 import { SContainerX, SText, STitle } from "../../common/style";
 import useGetApi from "../../hooks/useGetApi";
 import OneRowGrid from "../atoms/OneRowGrid";
-const NomalAlbumsSlid = ({ isLogin, title, substring, width, genre }) => {
+
+const NomalAlbumsSlid = ({
+  isLogin,
+  title,
+  substring,
+  width,
+  genre,
+  height = width,
+}) => {
   const { list, isLoading } = useGetApi({
     func: onTracks,
     api: genre,
     isLogin,
   });
-
+  console.log(list);
   if (isLoading) {
     return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
   }
@@ -27,7 +35,12 @@ const NomalAlbumsSlid = ({ isLogin, title, substring, width, genre }) => {
             list.map(
               (el, i) =>
                 i !== 0 && (
-                  <OneRowGrid width={width} key={el.id} src={el.images[1].url}>
+                  <OneRowGrid
+                    width={width}
+                    key={el.id}
+                    src={el.images[1].url}
+                    height={height}
+                  >
                     <SText marginTop={1}>
                       {el.name.length > substring
                         ? el.name.substring(0, substring) + " ..."

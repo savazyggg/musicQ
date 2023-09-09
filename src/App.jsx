@@ -17,7 +17,6 @@ function App() {
   const { isLogin } = useLogin();
   const [headerActive, setHeaderActive] = useState(true);
   const onHeaderActive = (value) => setHeaderActive(value);
-  console.log(isLogin);
   const router = createBrowserRouter([
     {
       path: "/",

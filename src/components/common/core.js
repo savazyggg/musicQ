@@ -19,6 +19,12 @@ export const substring = {
   s40: 40,
 };
 
-export const borderRadius = {};
+export const borderRadius = {
+  RoundSqure: "8",
+  Round: "50",
+};
 
-export const imgScale = {};
+export const imgScale = {
+  step1: "150px",
+  step2: "220px",
+};

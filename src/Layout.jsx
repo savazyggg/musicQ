@@ -19,7 +19,7 @@ const Layout = ({ headerActive }) => {
     </SLayOut>
   );
 };
-
+//background-color: ${theme.bg};
 export default Layout;
 
 const SLayOut = styled.main`
@@ -27,7 +27,13 @@ const SLayOut = styled.main`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: ${theme.bg};
+
+  background-image: linear-gradient(
+    45deg,
+    ${theme.hoverColor},
+    ${theme.bg},
+    ${theme.subFontColor}
+  );
   color: ${theme.fontColor};
   font-weight: 500;
   max-width: 500px;

@@ -7,7 +7,7 @@ import OneRowGrid from "../atoms/OneRowGrid";
 
 const NomalSlid = ({ isLogin, title, substring, width, genre, func }) => {
   const { list, isLoading } = useGetApi({ func: func, api: genre, isLogin });
-
+  console.log(list);
   if (isLoading) {
     return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
   }

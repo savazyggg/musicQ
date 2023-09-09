@@ -35,7 +35,7 @@ const AlbumPage = ({ isLogin, onHeaderActive }) => {
   };
 
   return (
-    <SectionLayout title="Detail.." onHeaderActive={onHeaderActive}>
+    <SectionLayout onHeaderActive={onHeaderActive}>
       <Image
         src={list?.images[1].url}
         marginRight={1}

@@ -8,5 +8,6 @@ export const onTracks = async (accessToken, api) => {
   };
   let artistID = await fetch(api, artistParams);
   let artistIDRes = await artistID.json();
-  return artistIDRes.items;
+
+  return artistIDRes.items ? artistIDRes.items : artistIDRes.albums.items;
 };
