@@ -22,7 +22,7 @@ const Layout = ({ headerActive }) => {
 //background-color: ${theme.bg};
 export default Layout;
 
-const SLayOut = styled.main`
+export const SLayOut = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

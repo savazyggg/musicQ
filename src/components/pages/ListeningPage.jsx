@@ -1,35 +1,46 @@
 import { Button, Image, Text } from "@chakra-ui/react";
+import { useState } from "react";
+import ReactAudioPlayer from "react-audio-player";
+import { SLayOut } from "../../Layout";
 import { opacity, theme } from "../common/core";
+import MusicBar from "../ui/organisms/MusicBar";
 const ListeningPage = ({ onClick, src }) => {
   const { songImg, songTitle, songArtist } = src;
+
   return (
-    <div
+    <SLayOut
       style={{
         position: "fixed",
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: theme.bg,
+        minWidth: "100vw",
         zIndex: "3",
         padding: "0 20px",
+        borderRadius: "10px",
       }}
     >
       <div>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <Button
             onClick={onClick}
-            marginRight="-20px"
-            backgroundColor={`rgba(176, 168, 185, ${opacity.heavy})`}
-          >
-            X
-          </Button>
+            backgroundColor={`rgba(225, 225, 225, ${opacity.wavy})`}
+            width="80px"
+            height="10px"
+            margin="0 auto"
+          />
         </div>
         <Image
           src={songImg}
-          width="320px"
+          width="75%"
           borderRadius="10px"
-          margin="70px auto"
+          margin="60px auto"
         />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+
+            margin: "0 auto",
+          }}
+        >
           <div>
             <Text fontSize="24px">{songTitle}</Text>
             <Text>{songArtist}</Text>
@@ -55,8 +66,19 @@ const ListeningPage = ({ onClick, src }) => {
             </svg>
           </div>
         </div>
+        <div style={{ marginTop: "50px" }}>
+          {/* <ReactAudioPlayer
+            src="/path/to/audio.mp3"
+            controls
+            style={{
+              width: "80%",
+              margin: "0 auto",
+            }}
+          /> */}
+          <MusicBar />
+        </div>
       </div>
-    </div>
+    </SLayOut>
   );
 };
 

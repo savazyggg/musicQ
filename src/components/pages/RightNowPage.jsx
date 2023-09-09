@@ -30,14 +30,7 @@ const RightNowPage = ({ isLogin, onHeaderActive }) => {
         substring={substring.s16}
         func={onRecommand}
       />
-      <NomalSlid
-        isLogin={isLogin}
-        title="what's on fire🔥"
-        genre="country%2Chiphop%2Cpop"
-        width="160px"
-        substring={substring.s16}
-        func={onRecommand}
-      />
+
       <WideListSlid
         isLogin={isLogin}
         genre="hiphop"
