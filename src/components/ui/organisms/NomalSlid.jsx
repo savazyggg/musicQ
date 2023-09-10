@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
-import { onRecommand } from "../../api/onRecommand";
 import { theme } from "../../common/core";
 import { SContainerX, SText, STitle } from "../../common/style";
 import useGetApi from "../../hooks/useGetApi";
 import OneRowGrid from "../atoms/OneRowGrid";
+import LoadingBox from "../molecules/LoadingBox";
 
 const NomalSlid = ({ isLogin, title, substring, width, genre, func }) => {
   const { list, isLoading } = useGetApi({ func: func, api: genre, isLogin });
-  console.log(list);
+
   if (isLoading) {
-    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
+    return <LoadingBox />; // 로딩 중일 때 표시할 내용
   }
 
   return (

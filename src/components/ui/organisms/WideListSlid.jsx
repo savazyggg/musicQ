@@ -4,9 +4,18 @@ import { onRecommand } from "../../api/onRecommand";
 import { opacity, theme } from "../../common/core";
 import { SContainerX, STitle } from "../../common/style";
 import useGetApi from "../../hooks/useGetApi";
+import LoadingBox from "../molecules/LoadingBox";
 
 const WideListSlid = ({ isLogin, genre, title, substring }) => {
-  const { list } = useGetApi({ func: onRecommand, api: genre, isLogin });
+  const { list, isLoading } = useGetApi({
+    func: onRecommand,
+    api: genre,
+    isLogin,
+  });
+
+  if (isLoading) {
+    return <LoadingBox />; // 로딩 중일 때 표시할 내용
+  }
 
   return (
     <>

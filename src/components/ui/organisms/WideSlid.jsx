@@ -4,6 +4,7 @@ import { TwoColGrid } from "../atoms/TwoColGird";
 import { onRecommand } from "../../api/onRecommand";
 import { SContainerX, SText, STitle } from "../../common/style";
 import useGetApi from "../../hooks/useGetApi";
+import LoadingBox from "../molecules/LoadingBox";
 
 const WideSlid = ({
   isLogin,
@@ -13,8 +14,14 @@ const WideSlid = ({
   substring2 = substring1,
   height,
 }) => {
-  const { list } = useGetApi({ func: onRecommand, api: genre, isLogin });
-
+  const { list, isLoading } = useGetApi({
+    func: onRecommand,
+    api: genre,
+    isLogin,
+  });
+  if (isLoading) {
+    return <LoadingBox />; // 로딩 중일 때 표시할 내용
+  }
   return (
     <>
       <STitle style={{ margin: "5px" }}>{title}</STitle>
