@@ -49,51 +49,45 @@ const Footer = ({ onClick }) => {
 
         <div style={{ marginLeft: 0 }}>
           {isListen ? (
-            <SText>
-              <div style={{ margin: "0" }} onClick={onListenToggle}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M11 22h-4v-20h4v20zm6-20h-4v20h4v-20z"
-                    fill={theme.fontColor}
-                  />
-                </svg>
-              </div>
-            </SText>
+            <div style={{ margin: "0" }} onClick={onListenToggle}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M11 22h-4v-20h4v20zm6-20h-4v20h4v-20z"
+                  fill={theme.fontColor}
+                />
+              </svg>
+            </div>
           ) : (
-            <SText>
-              <div style={{ margin: "0" }} onClick={onListenToggle}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="25"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M3 22v-20l18 10-18 10z" fill={theme.fontColor} />
-                </svg>
-              </div>
-            </SText>
-          )}
-
-          <SText2>
-            <div>
+            <div style={{ margin: "0" }} onClick={onListenToggle}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
                 height="25"
                 viewBox="0 0 24 24"
               >
-                <path
-                  d="M0 19v-14l12 7-12 7zm12 0v-14l12 7-12 7z"
-                  fill={theme.fontColor}
-                />
+                <path d="M3 22v-20l18 10-18 10z" fill={theme.fontColor} />
               </svg>
             </div>
-          </SText2>
+          )}
+
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M0 19v-14l12 7-12 7zm12 0v-14l12 7-12 7z"
+                fill={theme.fontColor}
+              />
+            </svg>
+          </div>
         </div>
       </SFooter>
       <SFooter

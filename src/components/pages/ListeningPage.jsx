@@ -12,7 +12,7 @@ const ListeningPage = ({ onClick, src }) => {
       style={{
         position: "fixed",
         minWidth: "100vw",
-        zIndex: "3",
+        zIndex: "20",
         padding: "0 20px",
         borderRadius: "10px",
       }}
