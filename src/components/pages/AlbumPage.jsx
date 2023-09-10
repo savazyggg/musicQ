@@ -1,15 +1,15 @@
 import { Image, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 import { onSearchDetail } from "../api/onSearchDetail";
 import { theme } from "../common/core";
 import SectionLayout from "../ui/molecules/SectionLayout";
 import Button from "../ui/atoms/Button";
 import { STitle } from "../common/style";
 import useGetApi from "../hooks/useGetApi";
+import GobackButton from "../ui/molecules/GobackButton";
 
 const URL = "https://api.spotify.com/v1/albums/6zXUDBGLbrB9Kgkw2Y3F7L";
 
-const AlbumPage = ({ isLogin, onHeaderActive }) => {
+const AlbumPage = ({ isLogin }) => {
   const { list, isLoading } = useGetApi({
     func: onSearchDetail,
     api: URL,
@@ -35,7 +35,8 @@ const AlbumPage = ({ isLogin, onHeaderActive }) => {
   };
 
   return (
-    <SectionLayout onHeaderActive={onHeaderActive}>
+    <SectionLayout>
+      <GobackButton />
       <Image
         src={list?.images[1].url}
         marginRight={1}

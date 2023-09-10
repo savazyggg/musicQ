@@ -1,22 +1,26 @@
 import { Image, Text } from "@chakra-ui/react";
-import { substring, theme } from "../common/core";
+import { theme } from "../common/core";
 import { onTracks } from "../api/onTracks";
 import useGetApi from "../hooks/useGetApi";
 import Artist from "../ui/molecules/Artist";
 import SectionLayout from "../ui/molecules/SectionLayout";
-import NomalSlid from "../ui/organisms/NomalSlid";
 import NomalAlbumsSlid from "../ui/organisms/NomalAlbumsSlide";
+import LoadingBox from "../ui/molecules/LoadingBox";
+import GobackButton from "../ui/molecules/GobackButton";
+import { useNavigate } from "react-router-dom";
 
 const URL =
   "https://api.spotify.com/v1/artists/0NIIxcxNHmOoyBx03SfTCD/albums?include_groups=single%2Calbum%2Cappears_on&market=KR&limit=10&offset=5";
-const ArtistPage = ({ isLogin, onHeaderActive }) => {
+const ArtistPage = ({ isLogin }) => {
+  const navigate = useNavigate();
   const { list, isLoading } = useGetApi({ func: onTracks, api: URL, isLogin });
-  console.log(list);
   if (isLoading) {
-    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
+    return <LoadingBox />; // 로딩 중일 때 표시할 내용
   }
+
   return (
-    <SectionLayout onHeaderActive={onHeaderActive}>
+    <SectionLayout>
+      <GobackButton />
       <Artist isLogin={isLogin} />
       {list[0] && (
         <div style={{ display: "flex" }}>
@@ -56,6 +60,9 @@ const ArtistPage = ({ isLogin, onHeaderActive }) => {
                 padding: "2px",
                 marginBottom: "3px",
               }}
+              onClick={() => {
+                navigate("/album");
+              }}
             >
               listen
             </button>
@@ -68,6 +75,9 @@ const ArtistPage = ({ isLogin, onHeaderActive }) => {
         title="albums"
         width="150px"
         genre={URL}
+        onClick={() => {
+          navigate("/album");
+        }}
       />
     </SectionLayout>
   );

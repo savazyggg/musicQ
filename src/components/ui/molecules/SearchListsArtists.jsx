@@ -1,9 +1,9 @@
-import React from "react";
 import SearchList from "../atoms/SearchList";
+import { useNavigate } from "react-router-dom";
 
 const SearchListsArtists = ({ searchData, onClick }) => {
   const artists = searchData.artists.items;
-
+  const navigate = useNavigate();
   return (
     <div>
       {artists.map((el) => {
@@ -16,7 +16,10 @@ const SearchListsArtists = ({ searchData, onClick }) => {
                 justifyContent: "space-between",
                 padding: "5px 0",
               }}
-              onClick={() => onClick(el.href)}
+              onClick={() => {
+                onClick(el.href);
+                navigate("/artist");
+              }}
             >
               <SearchList
                 imgSrc={el.images[1].url}

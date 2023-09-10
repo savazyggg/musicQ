@@ -17,9 +17,6 @@ export const TwoColGrid = ({
       colSpan={1}
       onClick={onClick}
       margin="0 5px"
-      _hover={{
-        backgroundColor: `rgba(176, 168, 185, ${opacity.heavy})`,
-      }}
       _active={{
         backgroundColor: `rgba(176, 168, 185, ${opacity.sligth})`,
       }}

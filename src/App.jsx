@@ -49,15 +49,11 @@ function App() {
         },
         {
           path: "/artist",
-          element: (
-            <ArtistPage isLogin={isLogin} onHeaderActive={onHeaderActive} />
-          ),
+          element: <ArtistPage isLogin={isLogin} />,
         },
         {
           path: "/album",
-          element: (
-            <AlbumPage isLogin={isLogin} onHeaderActive={onHeaderActive} />
-          ),
+          element: <AlbumPage isLogin={isLogin} />,
         },
       ],
     },

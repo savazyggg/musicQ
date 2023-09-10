@@ -1,7 +1,7 @@
 import { Box, Image, Text, Flex } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
 import { opacity, theme } from "../../common/core";
 import ListeningPage from "../../pages/ListeningPage";
 import { useNavigate } from "react-router-dom";

@@ -3,6 +3,7 @@ import { theme } from "../../common/core";
 import { SContainerX, SText, STitle } from "../../common/style";
 import useGetApi from "../../hooks/useGetApi";
 import OneRowGrid from "../atoms/OneRowGrid";
+import LoadingBox from "../molecules/LoadingBox";
 
 const NomalAlbumsSlid = ({
   isLogin,
@@ -11,6 +12,7 @@ const NomalAlbumsSlid = ({
   width,
   genre,
   height = width,
+  onClick,
 }) => {
   const { list, isLoading } = useGetApi({
     func: onTracks,
@@ -19,7 +21,7 @@ const NomalAlbumsSlid = ({
   });
   console.log(list);
   if (isLoading) {
-    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
+    return <LoadingBox />; // 로딩 중일 때 표시할 내용
   }
 
   return (
@@ -40,6 +42,7 @@ const NomalAlbumsSlid = ({
                     key={el.id}
                     src={el.images[1].url}
                     height={height}
+                    onClick={onClick}
                   >
                     <SText marginTop={1}>
                       {el.name.length > substring

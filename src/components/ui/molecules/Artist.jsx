@@ -7,7 +7,7 @@ import useGetApi from "../../hooks/useGetApi";
 const URL = "https://api.spotify.com/v1/artists/0NIIxcxNHmOoyBx03SfTCD";
 const Artist = ({ isLogin }) => {
   const { list } = useGetApi({ func: onSearchDetail, api: URL, isLogin });
-  console.log(list);
+
   return (
     <div>
       <Image
@@ -15,7 +15,7 @@ const Artist = ({ isLogin }) => {
         height="400px"
         objectFit="cover"
         src={list?.images[0].url}
-        margin="-60px -20px 0 -20px"
+        margin="-80px -20px 0 -20px"
       ></Image>
       <Text
         margin="-100px 0 0 0"
